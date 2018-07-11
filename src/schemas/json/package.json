@@ -218,8 +218,7 @@
               "type": "string"
             },
             "url": {
-              "type": "string",
-              "format": "uri"
+              "type": "string"
             }
           }
         },
@@ -373,6 +372,25 @@
         },
         "readme": {
           "type": "string"
+        },
+        "module": {
+          "description": "An ECMAScript module ID that is the primary entry point to your program.",
+          "type": "string"
+        },
+        "esnext": {
+          "description": "A module ID with untranspiled code that is the primary entry point to your program.",
+          "type": [ "string", "object" ],
+          "properties": {
+            "main": {
+              "type": "string"
+            },
+            "browser": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
@@ -411,20 +429,6 @@
               "bundleDependencies": { }
             },
             "required": [ "bundleDependencies" ]
-          }
-        }
-      ]
-    },
-    {
-      "anyOf": [
-        { "required": [ "name", "version" ] },
-        {
-          "not":{
-            "properties": {
-              "private": {
-                "enum": [false]
-              }
-            }
           }
         }
       ]

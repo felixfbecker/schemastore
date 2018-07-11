@@ -7,7 +7,21 @@
       "name": ".angular-cli.json",
       "description": "Angular CLI configuration file",
       "fileMatch": [ ".angular-cli.json", "angular-cli.json" ],
-      "url": "https://raw.githubusercontent.com/angular/angular-cli/master/packages/@angular/cli/lib/config/schema.json"
+      "url": "https://raw.githubusercontent.com/angular/angular-cli/master/packages/angular/cli/lib/config/schema.json"
+    },
+    {
+      "name": "Ansible",
+      "description": "Ansible task files",
+      "url": "http://json.schemastore.org/ansible-stable-2.5",
+      "fileMatch": [ "tasks/*.yml", "tasks/*.yaml" ],
+      "versions": {
+        "2.0": "http://json.schemastore.org/ansible-stable-2.0",
+        "2.1": "http://json.schemastore.org/ansible-stable-2.1",
+        "2.2": "http://json.schemastore.org/ansible-stable-2.2",
+        "2.3": "http://json.schemastore.org/ansible-stable-2.3",
+        "2.4": "http://json.schemastore.org/ansible-stable-2.4",
+        "2.5": "http://json.schemastore.org/ansible-stable-2.5"
+      }
     },
     {
       "name": "apple-app-site-association",
@@ -22,10 +36,40 @@
       "url": "http://json.schemastore.org/appsettings"
     },
     {
+      "name": "appveyor.yml",
+      "description": "AppVeyor CI configuration file",
+      "fileMatch": [ "appveyor.yml" ],
+      "url": "http://json.schemastore.org/appveyor"
+    },
+    {
+      "name": "Avro Avsc",
+      "description": "Avro Schema Avsc file",
+      "fileMatch": [ ".avsc" ],
+      "url": "http://json.schemastore.org/avro-avsc"
+    },
+    {
+      "name": "Foxx Manifest",
+      "description": "ArangoDB Foxx service manifest file",
+      "fileMatch": [ "manifest.json" ],
+      "url": "http://json.schemastore.org/foxx-manifest"
+    },
+    {
+      "name": ".asmdef",
+      "description": "Unity 3D assembly definition file",
+      "fileMatch": [ "*.asmdef" ],
+      "url": "http://json.schemastore.org/asmdef"
+    },
+    {
       "name": "babelrc.json",
       "description": "Babel configuration file",
       "fileMatch": [ ".babelrc" ],
       "url": "http://json.schemastore.org/babelrc"
+    },
+    {
+      "name": "batect.yml",
+      "description": "batect configuration file",
+      "fileMatch": [ "batect.yml" ],
+      "url": "https://batect.charleskorn.com/configSchema.json"
     },
     {
       "name": ".bootstraprc",
@@ -52,6 +96,12 @@
       "url": "http://json.schemastore.org/bundleconfig"
     },
     {
+      "name": "circleciconfig.json",
+      "description": "Schema for CircleCI 2.0 config files",
+      "fileMatch": [ ".circleci/config.yml" ],
+      "url": "http://json.schemastore.org/circleciconfig"
+    },
+    {
       "name": "compilerconfig.json",
       "description": "Schema for compilerconfig.json files",
       "fileMatch": [ "compilerconfig.json" ],
@@ -73,6 +123,24 @@
       "description": "Chutzpah configuration file",
       "fileMatch": [ "chutzpah.json" ],
       "url": "http://json.schemastore.org/chutzpah"
+    },
+    {
+      "name": "contentmanifest.json",
+      "description": "Visual Studio manifest injection file",
+      "fileMatch": [ "contentmanifest.json" ],
+      "url": "http://json.schemastore.org/vsix-manifestinjection"
+    },
+    {
+      "name": "AWS CloudFormation",
+      "description": "AWS CloudFormation provides a common language for you to describe and provision all the infrastructure resources in your cloud environment.",
+      "fileMatch": [ "*.cf.json", "*.cf.yml", "*.cf.yaml", "cloudformation.json", "cloudformation.yml", "cloudformation.yaml" ],
+      "url": "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"
+    },
+    {
+      "name": "AWS CloudFormation Serverless Application Model (SAM)",
+      "description": "The AWS Serverless Application Model (AWS SAM, previously known as Project Flourish) extends AWS CloudFormation to provide a simplified way of defining the Amazon API Gateway APIs, AWS Lambda functions, and Amazon DynamoDB tables needed by your serverless application.",
+      "fileMatch": [ "*.sam.json", "*.sam.yml", "*.sam.yaml", "sam.json", "sam.yml", "sam.yaml" ],
+      "url": "https://raw.githubusercontent.com/awslabs/goformation/master/schema/sam.schema.json"
     },
     {
       "name": "coffeelint.json",
@@ -105,6 +173,12 @@
       "url": "http://json.schemastore.org/contribute"
     },
     {
+      "name": "cypress.json",
+      "description": "Cypress.io test runner configuration file",
+      "fileMatch": [ "cypress.json" ],
+      "url": "https://raw.githubusercontent.com/cypress-io/cypress/develop/cli/schema/cypress.schema.json"
+    },
+    {
       "name": ".creatomic",
       "description": "A config for Atomic Design 4 React generator",
       "fileMatch": [ ".creatomic" ],
@@ -126,7 +200,7 @@
       "name": "debugsettings.json",
       "description": "A JSON schema for the ASP.NET DebugSettings.json files",
       "fileMatch": [ "debugsettings.json" ],
-      "url": "http://json.schemastore.org/launchsettings"
+      "url": "http://json.schemastore.org/debugsettings"
     },
     {
       "name": "docfx.json",
@@ -310,10 +384,16 @@
       "url": "http://json.schemastore.org/launchsettings"
     },
     {
-      "name": "library.json",
+      "name": "libman.json",
       "description": "JSON schema for client-side library config files",
-      "fileMatch": [ "library.json" ],
-      "url": "http://json.schemastore.org/library"
+      "fileMatch": [ "libman.json" ],
+      "url": "http://json.schemastore.org/libman"
+    },
+    {
+      "name": "lsdlschema.json",
+      "description": "JSON schema for Linguistic Schema Definition Language files",
+      "fileMatch": [ "*.lsdl.yaml" ],
+      "url": "http://json.schemastore.org/lsdlschema"
     },
     {
       "name": "Microsoft Band Web Tile",
@@ -353,6 +433,12 @@
       }
     },
     {
+      "name": "omnisharp.json",
+      "description": "Omnisharp Configuration file",
+      "fileMatch": [ "omnisharp.json" ],
+      "url": "http://json.schemastore.org/omnisharp"
+    },
+    {
       "name": "openfin.json",
       "description": "OpenFin application configuration file",
       "url": "http://json.schemastore.org/openfin"
@@ -376,10 +462,25 @@
       "url": "http://json.schemastore.org/pattern"
     },
     {
+      "name": ".phraseapp.yml",
+      "description": "PhraseApp configuration file",
+      "fileMatch": [ ".phraseapp.yml" ],
+      "url": "http://json.schemastore.org/phraseapp"
+    },
+    {
       "name": "prettierrc.json",
       "description": ".prettierrc configuration file",
       "fileMatch": [ ".prettierrc", ".prettierrc.json" ],
-      "url": "http://json.schemastore.org/prettierrc"
+      "url": "http://json.schemastore.org/prettierrc",
+      "versions": {
+        "1.8.2": "http://json.schemastore.org/prettierrc-1.8.2"
+      }
+    },
+    {
+      "name": "prisma.yml",
+      "description": "prisma.yml service definition file",
+      "fileMatch": [ "prisma.yml" ],
+      "url": "http://json.schemastore.org/prisma"
     },
     {
       "name": "project.json",
@@ -451,9 +552,15 @@
       "url": "http://json.schemastore.org/resume"
     },
     {
+      "name": "Renovate",
+      "description": "Renovate config file (https://renovatebot.com/)",
+      "fileMatch": [ "renovate.json" ],
+      "url": "http://json.schemastore.org/renovate"
+    },
+    {
       "name": "sarif-1.0.0.json",
       "description": "Static Analysis Results Interchange Format (SARIF)",
-      "fileMatch": [ "*.sarif,*.sarif.json" ],
+      "fileMatch": [ "*.sarif", "*.sarif.json" ],
       "url": "http://json.schemastore.org/sarif",
       "versions": {
         "1.0.0-beta.4": "http://json.schemastore.org/sarif-1.0.0-beta.4.json",
@@ -508,6 +615,12 @@
       "url": "http://json.schemastore.org/settings.job"
     },
     {
+      "name": "skyuxconfig.json",
+      "description": "SKY UX CLI configuration file",
+      "fileMatch": [ "skyuxconfig.json", "skyuxconfig.*.json" ],
+      "url": "https://raw.githubusercontent.com/blackbaud/skyux-builder/master/skyuxconfig-schema.json"
+    },
+    {
       "name": "Solidarity",
       "description": "CLI config for enforcing environment settings",
       "fileMatch": [ ".solidarity", ".solidarity.json" ],
@@ -556,6 +669,12 @@
       "url": "http://json.schemastore.org/templatesources"
     },
     {
+      "name": ".travis.yml",
+      "description": "Travis CI configuration file",
+      "fileMatch": [ ".travis.yml" ],
+      "url": "http://json.schemastore.org/travis"
+    },
+    {
       "name": "tsconfig.json",
       "description": "TypeScript compiler configuration file",
       "fileMatch": [ "tsconfig.json" ],
@@ -580,6 +699,12 @@
       "url": "http://json.schemastore.org/tslint"
     },
     {
+      "name": "typewiz.json",
+      "description": "Typewiz configuration file",
+      "fileMatch": [ "typewiz.json" ],
+      "url": "http://json.schemastore.org/typewiz"
+    },
+    {
       "name": "typings.json",
       "description": "Typings TypeScript definitions manager definition file",
       "fileMatch": [ "typings.json" ],
@@ -590,6 +715,12 @@
       "description": "Typings TypeScript definitions manager configuration file",
       "fileMatch": [ ".typingsrc" ],
       "url": "http://json.schemastore.org/typingsrc"
+    },
+    {
+      "name": "up.json",
+      "description": "Up configuration file",
+      "fileMatch": [ "up.json" ],
+      "url": "http://json.schemastore.org/up.json"
     },
     {
       "name": "ui5-manifest",
@@ -616,10 +747,34 @@
       "url": "https://raw.githubusercontent.com/AArnott/Nerdbank.GitVersioning/master/src/NerdBank.GitVersioning/version.schema.json"
     },
     {
+      "name": "vsls.json",
+      "description": "Visual Studio Live Share configuration file",
+      "fileMatch": [ ".vsls.json" ],
+      "url": "http://json.schemastore.org/vsls"
+    },
+    {
+      "name": "vs-2017.3.host.json",
+      "description": "JSON schema for Visual Studio template host file",
+      "fileMatch": [ "vs-2017.3.host.json" ],
+      "url": "http://json.schemastore.org/vs-2017.3.host"
+    },
+    {
       "name": "vs-nesting.json",
       "description": "JSON schema for Visual Studio's file nesting feature",
-      "fileMatch": [ "*.nesting.json" ],
+      "fileMatch": [ "*.filenesting.json", ".filenesting.json" ],
       "url": "http://json.schemastore.org/vs-nesting"
+    },
+    {
+      "name": ".vsext",
+      "description": "JSON schema for Visual Studio extension pack manifests",
+      "fileMatch": [ "*.vsext" ],
+      "url": "http://json.schemastore.org/vsext"
+    },
+    {
+      "name": "VSIX CLI publishing",
+      "description": "JSON schema for Visual Studio extension publishing",
+      "fileMatch": [ "vs-publish.json" ],
+      "url": "http://json.schemastore.org/vsix-publish"
     },
     {
       "name": "Web Extensions",
@@ -650,8 +805,8 @@
       "url": "https://json-stat.org/format/schema/2.0/"
     },
     {
-      "name": "KSP-CKAN 1.16",
-      "description": "Metadata spec v1.16 for KSP-CKAN",
+      "name": "KSP-CKAN 1.22",
+      "description": "Metadata spec v1.22 for KSP-CKAN",
       "fileMatch": [ "*.ckan" ],
       "url": "http://json.schemastore.org/ksp-ckan-1.16"
     },
@@ -661,16 +816,46 @@
       "url": "http://json-schema.org/draft-04/schema"
     },
     {
-      "name": "vs-2017.3.host.json",
-      "description": "JSON schema for Visual Studio template host file",
-      "fileMatch": [ "vs-2017.3.host.json" ],
-      "url": "http://json.schemastore.org/vs-2017.3.host"
-    },
-    {
       "name": "xunit.runner.json",
       "description": "xUnit.net runner configuration file",
       "fileMatch": [ "xunit.runner.json" ],
       "url": "http://json.schemastore.org/xunit.runner.schema"
+    },
+    {
+      "name": ".cryproj engine-5.2",
+      "description": "A JSON schema for CRYENGINE projects (.cryproj files)",
+      "fileMatch": [ "*.cryproj" ],
+      "url": "http://json.schemastore.org/cryproj.52.schema"
+    },
+    {
+      "name": ".cryproj engine-5.3",
+      "description": "A JSON schema for CRYENGINE projects (.cryproj files)",
+      "fileMatch": [ "*.cryproj" ],
+      "url": "http://json.schemastore.org/cryproj.53.schema"
+    },
+    {
+      "name": ".cryproj engine-5.4",
+      "description": "A JSON schema for CRYENGINE projects (.cryproj files)",
+      "fileMatch": [ "*.cryproj" ],
+      "url": "http://json.schemastore.org/cryproj.54.schema"
+    },
+    {
+      "name": ".cryproj engine-5.5",
+      "description": "A JSON schema for CRYENGINE projects (.cryproj files)",
+      "fileMatch": [ "*.cryproj" ],
+      "url": "http://json.schemastore.org/cryproj.55.schema"
+    },
+    {
+      "name": ".cryproj engine-dev",
+      "description": "A JSON schema for CRYENGINE projects (.cryproj files)",
+      "fileMatch": [ "*.cryproj" ],
+      "url": "http://json.schemastore.org/cryproj.dev.schema"
+    },
+    {
+      "name": ".cryproj (generic)",
+      "description": "A JSON schema for CRYENGINE projects (.cryproj files)",
+      "fileMatch": [ "*.cryproj" ],
+      "url": "http://json.schemastore.org/cryproj"
     }
   ]
 }

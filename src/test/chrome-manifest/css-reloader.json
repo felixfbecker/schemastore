@@ -25,7 +25,8 @@
 	"content_scripts": [
 		{
 			"matches": [ "http://*/*", "https://*/*" ],
-			"js": [ "cssreloader.content.js" ]
+      "js": [ "cssreloader.content.js" ],
+      "match_about_blank": true
 		}
 	]
 }

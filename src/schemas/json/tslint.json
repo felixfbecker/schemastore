@@ -258,6 +258,26 @@
             }
           ]
         },
+        "ban-comma-operator": {
+          "description": "Bans the comma operator.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/rule"
+            },
+            {
+              "items": [
+                {
+                  "type": "boolean"
+                }
+              ],
+              "additionalItems": false,
+              "properties": {
+                "severity": {}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
         "binary-expression-operand-order": {
           "description": "In a binary expression, a literal should always be on the right-hand side if possible.\nFor example, prefer 'x + 1' over '1 + x'.",
           "allOf": [
@@ -940,6 +960,20 @@
           ]
         },
         "jsdoc-format": {
+          "definitions": {
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "check-multiline-start"
+                ]
+              },
+              "minItems": 0,
+              "maxItems": 1,
+              "uniqueItems": true
+            }
+          },
           "description": "Enforces basic format rules for JSDoc comments.",
           "allOf": [
             {
@@ -951,8 +985,21 @@
                   "type": "boolean"
                 }
               ],
-              "additionalItems": false,
+              "additionalItems": {
+                "$ref": "#/definitions/rules/properties/jsdoc-format/definitions/options/items"
+              },
               "properties": {
+                "options": {
+                  "description": "An option value or an array of multiple option values.",
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/rules/properties/jsdoc-format/definitions/options"
+                    },
+                    {
+                      "$ref": "#/definitions/rules/properties/jsdoc-format/definitions/options/items"
+                    }
+                  ]
+                },
                 "severity": {}
               },
               "additionalProperties": false
@@ -1032,12 +1079,20 @@
           "definitions": {
             "options": {
               "type": "array",
-              "items": {
-                "type": "number",
-                "minimum": 1
-              },
+              "items": [
+                {
+                  "type": "number",
+                  "minimum": 1
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "exclude-class-expressions"
+                  ]
+                }
+              ],
               "minItems": 1,
-              "maxItems": 1
+              "maxItems": 2
             }
           },
           "allOf": [
@@ -1048,12 +1103,17 @@
               "items": [
                 {
                   "type": "boolean"
+                }, 
+                {
+                  "$ref": "#/definitions/rules/properties/max-classes-per-file/definitions/options/items/0"
+                },
+                {
+                  "$ref": "#/definitions/rules/properties/max-classes-per-file/definitions/options/items/1"
                 }
               ],
-              "additionalItems": {
-                "$ref": "#/definitions/rules/properties/max-classes-per-file/definitions/options/items"
-              },
-              "maxItems": 2,
+              "additionalItems": false,
+              "minItems": 2,
+              "maxItems": 3,
               "properties": {
                 "options": {
                   "description": "An option value or an array of multiple option values.",
@@ -1062,7 +1122,7 @@
                       "$ref": "#/definitions/rules/properties/max-classes-per-file/definitions/options"
                     },
                     {
-                      "$ref": "#/definitions/rules/properties/max-classes-per-file/definitions/options/items"
+                      "$ref": "#/definitions/rules/properties/max-classes-per-file/definitions/options/items/0"
                     }
                   ]
                 },
@@ -1123,11 +1183,26 @@
             "options": {
               "type": "array",
               "items": {
-                "type": "number",
-                "minimum": 1
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "limit": {
+                        "type": "number"
+                      },
+                      "ignore-pattern": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
               },
-              "minItems": 1,
-              "maxItems": 1
+              "minLength": 1,
+              "maxLength": 2
             }
           },
           "allOf": [
@@ -1170,6 +1245,11 @@
               "items": {
                 "type": "string",
                 "enum": [
+                  "static-field",
+                  "instance-field",
+                  "static-method",
+                  "instance-method",
+                  "constructor",
                   "public-static-field",
                   "public-static-method",
                   "protected-static-field",
@@ -1277,6 +1357,26 @@
         },
         "newline-before-return": {
           "description": "Enforces blank line before return when not the only line in the block.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/rule"
+            },
+            {
+              "items": [
+                {
+                  "type": "boolean"
+                }
+              ],
+              "additionalItems": false,
+              "properties": {
+                "severity": {}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "newline-per-chained-call": {
+          "description": "Requires that chained method calls be broken apart onto separate lines.",
           "allOf": [
             {
               "$ref": "#/definitions/rule"
@@ -1564,6 +1664,26 @@
             }
           ]
         },
+        "no-duplicate-switch-case": {
+          "description": "Prevents duplicate cases in switch statements.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/rule"
+            },
+            {
+              "items": [
+                {
+                  "type": "boolean"
+                }
+              ],
+              "additionalItems": false,
+              "properties": {
+                "severity": {}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
         "no-duplicate-variable": {
           "description": "Disallows duplicate variable declarations in the same block scope.",
           "definitions": {
@@ -1605,6 +1725,26 @@
                     }
                   ]
                 },
+                "severity": {}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "no-dynamic-delete": {
+          "description": "Bans usage of the delete operator with computed key expressions.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/rule"
+            },
+            {
+              "items": [
+                {
+                  "type": "boolean"
+                }
+              ],
+              "additionalItems": false,
+              "properties": {
                 "severity": {}
               },
               "additionalProperties": false
@@ -1692,6 +1832,54 @@
               ],
               "additionalItems": false,
               "properties": {
+                "severity": {}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "no-implicit-dependencies": {
+          "description": "Disallows importing modules that are not listed as dependency in the project’s package.json.",
+          "definitions": {
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "dev",
+                  "optional"
+                ]
+              },
+              "minItems": 0,
+              "maxItems": 2
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/rule"
+            },
+            {
+              "items": [
+                {
+                  "type": "boolean"
+                }
+              ],
+              "maxItems": 3,
+              "additionalItems": {
+                "$ref": "#/definitions/rules/properties/no-implicit-dependencies/definitions/options/items"
+              },
+              "properties": {
+                "options": {
+                  "description": "An option value or an array of multiple option values.",
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/rules/properties/no-implicit-dependencies/definitions/options"
+                    },
+                    {
+                      "$ref": "#/definitions/rules/properties/no-implicit-dependencies/definitions/options/items"
+                    }
+                  ]
+                },
                 "severity": {}
               },
               "additionalProperties": false
@@ -1921,6 +2109,26 @@
         },
         "no-reference": {
           "description": "Disallows `/// <reference path=>` imports (use ES6-style imports instead).",
+          "allOf": [
+            {
+              "$ref": "#/definitions/rule"
+            },
+            {
+              "items": [
+                {
+                  "type": "boolean"
+                }
+              ],
+              "additionalItems": false,
+              "properties": {
+                "severity": {}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "no-return-await": {
+          "description": "Disallows unnecessary `return await`.",
           "allOf": [
             {
               "$ref": "#/definitions/rule"
@@ -2222,11 +2430,12 @@
                 "enum": [
                   "ignore-comments",
                   "ignore-jsdoc",
-                  "ignore-template-strings"
+                  "ignore-template-strings",
+                  "ignore-blank-lines"
                 ]
               },
               "minItems": 1,
-              "maxItems": 3,
+              "maxItems": 4,
               "uniqueItems": true
             }
           },
@@ -2243,7 +2452,7 @@
               "additionalItems": {
                 "$ref": "#/definitions/rules/properties/no-trailing-whitespace/definitions/options/items"
               },
-              "maxItems": 4,
+              "maxItems": 5,
               "uniqueItems": true,
               "properties": {
                 "options": {
@@ -2277,6 +2486,55 @@
               ],
               "additionalItems": false,
               "properties": {
+                "severity": {}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "no-unnecessary-class": {
+          "description": "Disallows classes that are not strictly necessary.",
+          "definitions": {
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "allow-constructor-only",
+                  "allow-empty-class",
+                  "allow-static-only"
+                ]
+              },
+              "minLength": 0,
+              "maxLength": 3
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/rule"
+            },
+            {
+              "items": [
+                {
+                  "type": "boolean"
+                }
+              ],
+              "additionalItems": {
+                "$ref": "#/definitions/rules/properties/no-unnecessary-class/definitions/options/items"
+              },
+              "maxItems": 4,
+              "properties": {
+                "options": {
+                  "description": "An option value or an array of multiple option values.",
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/rules/properties/no-unnecessary-class/definitions/options"
+                    },
+                    {
+                      "$ref": "#/definitions/rules/properties/no-unnecessary-class/definitions/options/items"
+                    }
+                  ]
+                },
                 "severity": {}
               },
               "additionalProperties": false
@@ -2532,6 +2790,21 @@
           ]
         },
         "object-literal-shorthand": {
+          "definitions": {
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "always",
+                  "never"
+                ]
+              },
+              "minItems": 1,
+              "maxItems": 2,
+              "uniqueItems": true
+            }
+          },
           "description": "Enforces use of ES6 object literal shorthand when possible.",
           "allOf": [
             {
@@ -2543,8 +2816,21 @@
                   "type": "boolean"
                 }
               ],
-              "additionalItems": false,
+              "additionalItems": {
+                "$ref": "#/definitions/rules/properties/object-literal-shorthand/definitions/options/items"
+              },
               "properties": {
+                "options": {
+                  "description": "An option value or an array of multiple option values.",
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/rules/properties/object-literal-shorthand/definitions/options"
+                    },
+                    {
+                      "$ref": "#/definitions/rules/properties/object-literal-shorthand/definitions/options/items"
+                    }
+                  ]
+                },
                 "severity": {}
               },
               "additionalProperties": false
@@ -3276,7 +3562,8 @@
                   "type": "string",
                   "enum": [
                     "ignore-interfaces",
-                    "ignore-bound-class-methods"
+                    "ignore-bound-class-methods",
+                    "strict-bound-class-methods"
                   ]
                 }
               ],
@@ -4174,11 +4461,12 @@
                 "enum": [
                   "no-public",
                   "check-accessor",
-                  "check-constructor"
+                  "check-constructor",
+                  "check-parameter-property"
                 ]
               },
               "minItems": 1,
-              "maxItems": 3,
+              "maxItems": 4,
               "uniqueItems": true
             }
           },
@@ -4576,6 +4864,26 @@
             }
           ]
         },
+        "no-redundant-jsdoc": {
+          "description": "Forbids JSDoc which duplicates TypeScript functionality.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/rule"
+            },
+            {
+              "items": [
+                {
+                  "type": "boolean"
+                }
+              ],
+              "additionalItems": false,
+              "properties": {
+                "severity": {}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
         "no-reference-import": {
           "description": "Don't `<reference types=\"foo\" />` if you import `foo` anyway.",
           "allOf": [
@@ -4665,6 +4973,16 @@
         },
         "no-unnecessary-type-assertion": {
           "description": "Warns if a type assertion does not change the type of an expression.",
+          "definitions": {
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
           "allOf": [
             {
               "$ref": "#/definitions/rule"
@@ -4675,8 +4993,22 @@
                   "type": "boolean"
                 }
               ],
-              "additionalItems": false,
+              "additionalItems": {
+                "$ref": "#/definitions/tsRules/properties/no-unnecessary-type-assertion/definitions/options/items"
+              },
+              "uniqueItems": true,
               "properties": {
+                "options": {
+                  "description": "An option value or an array of multiple option values.",
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/tsRules/properties/no-unnecessary-type-assertion/definitions/options"
+                    },
+                    {
+                      "$ref": "#/definitions/tsRules/properties/no-unnecessary-type-assertion/definitions/options/items"
+                    }
+                  ]
+                },
                 "severity": {}
               },
               "additionalProperties": false
@@ -4779,6 +5111,50 @@
               ],
               "additionalItems": false,
               "properties": {
+                "severity": {}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "prefer-readonly": {
+          "description": "Requires that private variables are marked as `readonly` if they’re never modified outside of the constructor.",
+          "definitions": {
+            "options": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "only-inline-lambdas"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/rule"
+            },
+            {
+              "items": [
+                {
+                  "type": "boolean"
+                }
+              ],
+              "additionalItems": {
+                "$ref": "#/definitions/tsRules/properties/prefer-readonly/definitions/options/items"
+              },
+              "maxItems": 2,
+              "properties": {
+                "options": {
+                  "description": "An option value or an array of multiple option values.",
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/tsRules/properties/prefer-readonly/definitions/options"
+                    },
+                    {
+                      "$ref": "#/definitions/tsRules/properties/prefer-readonly/definitions/options/items"
+                    }]
+                },
                 "severity": {}
               },
               "additionalProperties": false

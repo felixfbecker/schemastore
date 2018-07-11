@@ -6,5 +6,9 @@
   },
   "cdn": {
     "url": "//foo.com"
+  },
+  "pwa": {
+    "registerWebmanifest":  true,
+    "strategy": "cacheFirstSafe"
   }
 }

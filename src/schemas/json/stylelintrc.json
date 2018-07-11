@@ -681,6 +681,7 @@
 						"dpi",
 						"dpcm",
 						"dppx",
+            "fr",
 						[]
 					]
 				},
@@ -726,6 +727,7 @@
 									"dpi",
 									"dpcm",
 									"dppx",
+                  "fr",
 									[],
 									{}
 								]
@@ -764,7 +766,8 @@
 										"kHz",
 										"dpi",
 										"dpcm",
-										"dppx"
+										"dppx",
+                    "fr"
 									]
 								}
 							},
@@ -851,9 +854,10 @@
 												"items": {
 													"type": "string",
 													"enum": [
-														"all-nested",
+														"after-same-name",
+														"inside-block",
 														"blockless-after-same-name-blockless",
-														"blockless-group",
+														"blockless-after-blockless",
 														"first-nested"
 													]
 												}
@@ -866,9 +870,10 @@
 													"type": "string",
 													"enum": [
 														"after-comment",
-														"all-nested",
+														"first-nested",
+														"inside-block",
 														"blockless-after-same-name-blockless",
-														"blockless-group"
+														"blockless-after-blockless"
 													]
 												}
 											},
@@ -3763,8 +3768,26 @@
 			"$ref": "#/definitions/simpleArrayStringRule"
 		},
 		"processors": {
-			"description": "Plugins are rules or sets of rules built by the community that support methodologies, toolsets, non-standard CSS features, or very specific use cases",
-			"$ref": "#/definitions/simpleArrayStringRule"
+			"description": "Processors are functions that hook into stylelint's pipeline, modifying code on its way into stylelint and modifying results on their way out",
+			"type": "array",
+			"items": {
+				"anyOf": [
+					{
+						"type": "string"
+					},
+					{
+						"type": "array",
+						"items": [
+							{
+								"type": "string"
+							}
+						],
+						"additionalItems": {
+							"type": "object"
+						}
+					}
+				]
+			}
 		},
 		"ignoreFiles": {
 			"description": "Provide a glob or array of globs to ignore specific files",
